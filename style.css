@@ -299,7 +299,7 @@ footer {
 .botao-link {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #90ee90;
+  background-color: #42b097;
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -309,5 +309,5 @@ footer {
 }
 
 .botao-link:hover {
-  background-color: #0056b3;
+  background-color: #42b097;
 }
