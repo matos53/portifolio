@@ -1,129 +1,117 @@
-// Criar estrelas no fundo
-function criarEstrelas() {
-    const starsContainer = document.getElementById('stars');
-    const quantidade = 150;
+// ===== EFEITO DE DIGITAÇÃO =====
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    const typingInterval = setInterval(() => {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(typingInterval);
+        }
+    }, speed);
+}
 
-    for (let i = 0; i < quantidade; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        
-        // Posição aleatória
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        
-        // Tamanho aleatório
-        const size = Math.random() * 3 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        
-        // Delay da animação
-        star.style.animationDelay = Math.random() * 3 + 's';
-        
-        starsContainer.appendChild(star);
+document.addEventListener("DOMContentLoaded", () => {
+    const typingElement = document.querySelector(".typing-text");
+    if (typingElement) {
+        const text = typingElement.getAttribute("data-text");
+        typingElement.textContent = "";
+        typeWriter(typingElement, text, 90);
     }
-}
-
-// Rolagem suave no menu
-function rolagemSuave() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const alvoId = this.getAttribute('href');
-            const alvo = document.querySelector(alvoId);
-            
-            if (alvo) {
-                alvo.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// Formulário de contato
-function enviarFormulario() {
-    const form = document.getElementById('contactForm');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const botao = form.querySelector('.submit-btn');
-        const textoOriginal = botao.textContent;
-        
-        botao.textContent = 'Enviando...';
-        botao.disabled = true;
-        
-        setTimeout(() => {
-            alert('Mensagem enviada com sucesso!');
-            form.reset();
-            botao.textContent = textoOriginal;
-            botao.disabled = false;
-        }, 2000);
-    });
-}
-
-// Parallax das estrelas
-function efeitoParallax() {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const stars = document.querySelectorAll('.star');
-        
-        stars.forEach((star, index) => {
-            const velocidade = (index % 3 + 1) * 0.5;
-            star.style.transform = `translateY(${scrolled * velocidade}px)`;
-        });
-    });
-}
-
-// Animação ao aparecer na tela
-function animarScroll() {
-    const observer = new IntersectionObserver((entradas) => {
-        entradas.forEach(entrada => {
-            if (entrada.isIntersecting) {
-                entrada.target.style.opacity = '1';
-                entrada.target.style.transform = 'translateY(0)';
-            }
-        });
-    });
-
-    const elementos = document.querySelectorAll('.skill-card, .project-card');
-    elementos.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-}
-
-// Inicialização
-document.addEventListener('DOMContentLoaded', function() {
-    criarEstrelas();
-    rolagemSuave();
-    enviarFormulario();
-    efeitoParallax();
-    animarScroll();
 });
 
-// Adicionar estrelas extras
-setInterval(() => {
-    if (document.querySelectorAll('.star').length < 200) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = '0%';
-        star.style.width = Math.random() * 2 + 1 + 'px';
-        star.style.height = star.style.width;
-        star.style.animationDelay = '0s';
-        
-        document.getElementById('stars').appendChild(star);
-        
-        setTimeout(() => {
-            if (star.parentNode) {
-                star.parentNode.removeChild(star);
-            }
-        }, 10000);
+// ===== FUNDO ESTRELADO =====
+const starsCanvas = document.querySelector(".stars");
+if (starsCanvas) {
+    const ctx = starsCanvas.getContext("2d");
+    let starsArray = [];
+
+    function resizeCanvas() {
+        starsCanvas.width = window.innerWidth;
+        starsCanvas.height = window.innerHeight;
     }
-}, 3000);
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    function createStars(count) {
+        starsArray = [];
+        for (let i = 0; i < count; i++) {
+            starsArray.push({
+                x: Math.random() * starsCanvas.width,
+                y: Math.random() * starsCanvas.height,
+                radius: Math.random() * 1.5,
+                speed: Math.random() * 0.3 + 0.1,
+            });
+        }
+    }
+    createStars(150);
+
+    function animateStars() {
+        ctx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
+        ctx.fillStyle = "white";
+        starsArray.forEach((star) => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fill();
+            star.y += star.speed;
+            if (star.y > starsCanvas.height) {
+                star.y = 0;
+                star.x = Math.random() * starsCanvas.width;
+            }
+        });
+        requestAnimationFrame(animateStars);
+    }
+    animateStars();
+}
+
+// ===== ANIMAÇÃO DAS BARRAS DE HABILIDADES =====
+const aboutSection = document.getElementById("about");
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateSkills();
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+function animateSkills() {
+    const skills = document.querySelectorAll(".skill-progress");
+    skills.forEach((skill) => {
+        const percent = skill.getAttribute("data-percent");
+        skill.style.width = percent + "%";
+    });
+}
+
+if (aboutSection) {
+    observer.observe(aboutSection);
+}
+
+// ===== LÓGICA DO FORMULÁRIO DE CONTATO (WhatsApp) =====
+document.addEventListener("DOMContentLoaded", () => {
+    const whatsappButton = document.getElementById("send-whatsapp");
+
+    if (whatsappButton) {
+        whatsappButton.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            // Pega os valores dos campos
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            // Formata a mensagem para o WhatsApp
+            const whatsappMessage = `Olá, meu nome é ${name}.\n\n` +
+                                    `Assunto: ${subject}\n` +
+                                    `Email: ${email}\n\n` +
+                                    `Mensagem: ${message}`;
+
+            // URL para o WhatsApp com a mensagem formatada
+            const whatsappURL = `https://wa.me/5511964911244?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Abre o WhatsApp em uma nova aba
+            window.open(whatsappURL, '_blank');
+        });
+    }
+});

@@ -3,153 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio - Desenvolvedor Front-End</title>
+    <title>Felipe Matos | Desenvolvedor Front-End</title>
+    
+    <meta name="description" content="Portfólio de Felipe Matos, desenvolvedor front-end especializado em HTML, CSS, JavaScript, WordPress e React Native.">
+    <meta name="keywords" content="portfólio, desenvolvedor, front-end, freelancer, HTML, CSS, JavaScript, WordPress, React Native">
+    <meta name="author" content="Felipe Matos">
+    <meta property="og:title" content="Felipe Matos - Desenvolvedor Front-End">
+    <meta property="og:description" content="Especialista em criar experiências web incríveis como freelancer.">
+    <meta property="og:image" content="https://seusite.com/imagem_do_seu_portfolio.jpg">
+    <meta property="og:url" content="https://seusite.com">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Efeito de estrelas -->
-    <div class="stars" id="stars"></div>
+    <canvas class="stars" id="stars"></canvas>
 
-    <!-- Cabeçalho -->
     <header>
         <nav>
-            <div class="logo">Meu Portfólio</div>
+            <div class="logo">FM</div>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
-                <li><a href="#skills">Habilidades</a></li>
                 <li><a href="#projects">Projetos</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Seção inicial -->
-    <section id="home" class="hero">
+    <section id="home" class="hero fade-in">
         <div class="container">
-            <h1>Desenvolvedor Front-End</h1>
-            <p>Especialista em criar experiências web incríveis como freelancer</p>
-            <a href="#projects" class="cta-button">Ver Meus Projetos</a>
+            <h1 class="typing-text" data-text="Felipe Matos"></h1>
+            <p class="subtitle">Desenvolvedor Front-End especialista em criar experiências web incríveis como freelancer</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-button primary">Ver Projetos</a>
+                <a href="https://profile.indeed.com/p/felipem-3l7kg0s" class="cta-button secondary" download>Baixar CV</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/matos53" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/felipe-matos-b79684277" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://instagram.com/matos_53" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </section>
 
-    <!-- Sobre -->
-    <section id="about">
-        <div class="container">
-            <div class="about">
-                <h2>Sobre Mim</h2>
+    <section id="about" class="fade-in">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2>Minha Jornada</h2>
                 <p>
-                    Sou um desenvolvedor front-end freelancer apaixonado por criar soluções web modernas e funcionais. 
-                    Tenho experiência com HTML, CSS, JavaScript, WordPress e React Native, sempre focando em sites 
-                    e aplicações rápidas, acessíveis e com ótimo design. Busco entregar resultados de qualidade 
-                    no prazo e garantir a melhor experiência ao usuário.
+                    Sou um desenvolvedor front-end freelancer apaixonado por transformar ideias em soluções web modernas e funcionais. 
+                    Com experiência em HTML, CSS, JavaScript, WordPress e React Native, meu foco é sempre em performance, acessibilidade e design responsivo.
+                    Busco entregar projetos que não apenas atendam, mas superem as expectativas, garantindo a melhor experiência do usuário em todas as plataformas.
                 </p>
             </div>
+            <div class="about-skills">
+                <h2>Principais Tecnologias</h2>
+                <div class="skill-item">
+                    <span>HTML5</span>
+                    <div class="skill-bar"><div class="skill-progress" data-percent="95"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>CSS3</span>
+                    <div class="skill-bar"><div class="skill-progress" data-percent="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>JavaScript</span>
+                    <div class="skill-bar"><div class="skill-progress" data-percent="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>WordPress</span>
+                    <div class="skill-bar"><div class="skill-progress" data-percent="75"></div></div>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <!-- Habilidades -->
-    <section id="skills">
-        <div class="container">
-            <h2>Minhas Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Linguagens Web</h3>
-                    <p>HTML5, CSS3, JavaScript ES6+, Design Responsivo</p>
-                </div>
-                <div class="skill-card">
-                    <h3>WordPress</h3>
-                    <p>Temas, plugins, customização e WooCommerce</p>
-                </div>
-                <div class="skill-card">
-                    <h3>React Native</h3>
-                    <p>Aplicativos móveis multiplataforma</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Ferramentas</h3>
-                    <p>Git, Figma, SEO, Otimização de performance</p>
-                </div>
+        <div class="container section-cards fade-in">
+            <div class="card">
+                <i class="fas fa-globe"></i>
+                <h3>Linguagens Web</h3>
+                <p>HTML5, CSS3, JavaScript, Sass, Bootstrap.</p>
+            </div>
+            <div class="card">
+                <i class="fab fa-wordpress-simple"></i>
+                <h3>WordPress</h3>
+                <p>Criação de sites e blogs com personalização de temas.</p>
+            </div>
+            <div class="card">
+                <i class="fab fa-react"></i>
+                <h3>React Native</h3>
+                <p>Desenvolvimento de aplicativos móveis.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-tools"></i>
+                <h3>Ferramentas</h3>
+                <p>Git, Figma, Webpack, Babel.</p>
             </div>
         </div>
     </section>
 
-    <!-- Projetos -->
-    <section id="projects">
+    <section id="projects" class="fade-in">
         <div class="container">
-            <h2>Meus Projetos</h2>
+            <div class="projects-header">
+                <h2>Meus Projetos</h2>
+                <a href="https://github.com/matos53" target="_blank" class="github-button"><i class="fab fa-github"></i> Ver Todos no GitHub</a>
+            </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">🌐</div>
+                    <img src="https://via.placeholder.com/400x250/333/fff?text=Natura+Page" alt="Imagem do projeto Natura">
                     <div class="project-content">
-                        <h3>Site da natura</h3>
-                        <p>Criei uma landing page sobre a natura.</p>
-                        <a href="https://matos53.github.io/landing_page_natura/" target="_blank" class="botao-link">
-                        Ver página
-                        </a>
+                        <h3>Site da Natura</h3>
+                        <p>Landing page moderna e responsiva sobre a Natura.</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Design Responsivo</span>
+                            <span>Landing Page</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/matos53/landing_page_natura" target="_blank" class="project-button code"><i class="fas fa-code"></i> Código</a>
+                            <a href="https://matos53.github.io/landing_page_natura/" target="_blank" class="project-button live"><i class="fas fa-link"></i> Ver Página</a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="project-image">🎮</div>
+                    <img src="https://via.placeholder.com/400x250/333/fff?text=GTA+VI+Page" alt="Imagem do projeto GTA VI">
                     <div class="project-content">
                         <h3>Site sobre o GTA VI</h3>
-                        <p>Um site falando sobre o novo GTA que irá lançar em 2026.</p>
-                        <a href="https://matos53.github.io/landing_paga_GTA6/" target="_blank" class="botao-link">
-                        Ver página
-                        </a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🛒</div>
-                    <div class="project-content">
-                        <h3>E-commerce</h3>
-                        <p>Loja virtual completa com WooCommerce, integração de pagamentos e gestão de estoque.</p>
+                        <p>Um site informativo sobre o aguardado lançamento do GTA VI.</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Landing Page</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/matos53/landing_paga_GTA6" target="_blank" class="project-button code"><i class="fas fa-code"></i> Código</a>
+                            <a href="https://matos53.github.io/landing_paga_GTA6/" target="_blank" class="project-button live"><i class="fas fa-link"></i> Ver Página</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- Educação & Certificações -->
-    <section id="education">
-        <div class="container">
-            <h2>Educação & Certificações</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h3>Faculdade</h3>
-                    <p>Curso: Tecnólogo em análise e desenvolvimento de software</p>
-                    <span>Universidade Piaget (2023 - 2025)</span>
-                </div>
-                <div class="education-card">
-                    <h3>HTML e CSS</h3>
-                    <p>Classes, posicionamento e flexbox</p>
-                    <span>Alura - 2025</span>
-                </div>
-                <div class="education-card">
-                    <h3>HTML e CSS</h3>
-                    <p>Certificação:HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags</p>
-                    <span>Alura - 2025</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-        <!-- Contato -->
-    <section id="contact">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-
-            <!-- Informações de Contato -->
+    <section id="contact" class="fade-in">
+        <div class="container contact-container">
             <div class="contact-info">
-                <p><strong>📱 Telefone:</strong> (11) 96491-1244</p>
-                <p><strong>📧 Email:</strong> <a href="mailto:feh1805032@hotmail.com">feh1805032@hotmail.com</a></p>
-                <p><strong>📸 Instagram:</strong> <a href="https://instagram.com/matos_53" target="_blank">@matos_53</a></p>
+                <h2>Entre em Contato</h2>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>feh1805032@hotmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>(11) 96491-1244</span>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@matos_53</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Disponível para projetos freelancers</span>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Assunto</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button id="send-whatsapp" class="cta-button primary">Enviar Mensagem</button>
             </div>
         </div>
     </section>
 
-
-    <!-- Rodapé -->
     <footer>
         <p>&copy; 2025 Felipe Matos. Todos os direitos reservados.</p>
     </footer>
