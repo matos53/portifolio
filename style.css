@@ -215,7 +215,9 @@ h1, h2 {
 .skill-progress {
     background: linear-gradient(90deg, #a64dff, #8000ff);
     height: 100%;
+    /* Largura inicial para a animação */
     width: 0;
+    /* Transição para a animação */
     transition: width 2s ease;
 }
 
