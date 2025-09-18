@@ -1,4 +1,4 @@
-/* Reset Básico e Cores */
+/* VARIÁVEIS E GERAL */
 * {
     margin: 0;
     padding: 0;
@@ -23,6 +23,19 @@ body {
     overflow-x: hidden;
 }
 
+h1, h2 {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ANIMAÇÕES E EFEITOS ESPECIAIS */
 /* Fundo estrelado */
 .stars {
     position: fixed;
@@ -33,7 +46,28 @@ body {
     z-index: -1;
 }
 
-/* Navegação */
+/* Animação de entrada */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInSlideUp var(--fade-duration) ease-out forwards;
+}
+
+#about { animation-delay: 0.2s; }
+#projects { animation-delay: 0.4s; }
+#contact { animation-delay: 0.6s; }
+
+/* NAVEGAÇÃO E MENU HAMBÚRGUER */
 header {
     width: 100%;
     padding: 20px 0;
@@ -79,41 +113,24 @@ nav {
     color: var(--primary-color);
 }
 
-/* Seções e Layout Geral */
-section {
-    padding: 100px 20px;
-    max-width: 1200px;
-    margin: auto;
+/* Estilos do menu hambúrguer */
+.hamburger-menu {
+    display: none; /* Esconde o botão por padrão */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
 }
 
-h1, h2 {
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-bottom: 20px;
+.hamburger-menu:focus {
+    outline: none;
 }
 
-/* Animação de entrada */
-@keyframes fadeInSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeInSlideUp var(--fade-duration) ease-out forwards;
-}
-
-#about { animation-delay: 0.2s; }
-#projects { animation-delay: 0.4s; }
-#contact { animation-delay: 0.6s; }
-
-/* Hero Section */
+/* SEÇÕES E ELEMENTOS DA PÁGINA */
+/* Seção de Início (Hero) */
 .hero {
     height: 100vh;
     display: flex;
@@ -215,7 +232,6 @@ h1, h2 {
 .skill-progress {
     background: linear-gradient(90deg, #a64dff, #8000ff);
     height: 100%;
-    
 }
 
 .section-cards {
@@ -249,7 +265,7 @@ h1, h2 {
     color: var(--text-color);
 }
 
-/* Seção de Projetos */
+/* Seção de Projetos e Certificações */
 .projects-header {
     display: flex;
     justify-content: space-between;
@@ -287,12 +303,6 @@ h1, h2 {
 .project-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-}
-
-.project-card img {
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 .project-content {
@@ -406,24 +416,76 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+/* RESPONSIVIDADE (MOBILE) */
+/* Estilos do menu hambúrguer */
+.hamburger-menu {
+    display: none; /* Esconde o botão por padrão */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
     .nav-links {
         display: none;
-    }
-    nav {
         flex-direction: column;
         align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--background-dark);
+        padding-top: 100px;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
     }
+
+    .nav-links.active {
+        display: flex;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.5rem;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
     .hero-buttons {
         flex-direction: column;
     }
+    
     .about-container {
         flex-direction: column;
     }
+    
     .contact-container {
         flex-direction: column;
     }
+    
     .projects-grid {
         grid-template-columns: 1fr;
     }
